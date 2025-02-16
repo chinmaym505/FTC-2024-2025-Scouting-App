@@ -1,0 +1,24 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/teamNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Team"/>
+
+    <TextView
+        android:id="@+id/notesTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notes:">
+
+        <!-- We can add more TextViews or other UI elements here as needed -->
+    </TextView>
+</LinearLayout>

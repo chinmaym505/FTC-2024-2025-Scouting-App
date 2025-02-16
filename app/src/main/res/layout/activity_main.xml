@@ -1,0 +1,113 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/teamNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Team Name"/>
+
+    <!-- Auto Section -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Auto"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingTop="8dp"/>
+
+    <RadioGroup
+        android:id="@+id/autoRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/autoYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"/>
+
+        <RadioButton
+            android:id="@+id/autoNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:checked="true"/> <!-- Set default to No -->
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/autoSpecimensInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number of Specimens"
+        android:inputType="number"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/autoSamplesInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number of Samples"
+        android:inputType="number"
+        android:visibility="gone"/>
+
+    <!-- TeleOP Section -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TeleOP"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingTop="8dp"/>
+
+    <RadioGroup
+        android:id="@+id/teleOpRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/teleOpYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"/>
+
+        <RadioButton
+            android:id="@+id/teleOpNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:checked="true"/> <!-- Set default to No -->
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/teleOpSpecimensInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number of Specimens"
+        android:inputType="number"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/teleOpSamplesInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number of Samples"
+        android:inputType="number"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/teamRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"/>
+</LinearLayout>
