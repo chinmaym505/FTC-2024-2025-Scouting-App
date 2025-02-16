@@ -1,18 +1,20 @@
 package com.example.ftcscouting;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TeamAdapter.OnItemClickListener {
 
     private List<Team> teams;
     private RecyclerView teamRecyclerView;
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.saveButton);
         teamRecyclerView = findViewById(R.id.teamRecyclerView);
 
-        teamAdapter = new TeamAdapter(teams);
+        teamAdapter = new TeamAdapter(teams, this);
         teamRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         teamRecyclerView.setAdapter(teamAdapter);
 
@@ -91,5 +93,33 @@ public class MainActivity extends AppCompatActivity {
         // Set the radio buttons to "No" by default on startup
         autoRadioGroup.check(R.id.autoNo);
         teleOpRadioGroup.check(R.id.teleOpNo);
+    }
+
+    @Override
+    public void onEditClick(int position) {
+        Team team = teams.get(position);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Edit Notes");
+
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        builder.setPositiveButton("Save", (dialog, which) -> {
+            String newNote = input.getText().toString();
+            team.getNotes().clear();
+            team.getNotes().add(newNote);
+            teamAdapter.notifyItemChanged(position);
+        });
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+
+        builder.show();
+    }
+
+    @Override
+    public void onDeleteClick(int position) {
+        teams.remove(position);
+        teamAdapter.notifyItemRemoved(position);
+        teamAdapter.notifyItemRangeChanged(position, teams.size());
     }
 }
