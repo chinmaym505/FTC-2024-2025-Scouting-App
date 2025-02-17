@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
         RadioGroup autoSpecimensRadioGroup = findViewById(R.id.autoSpecimensRadioGroup);
         EditText autoSpecimensInput = findViewById(R.id.autoSpecimensInput);
         RadioGroup autoParkingRadioGroup = findViewById(R.id.autoParkingRadioGroup);
-        RadioGroup autoAscentLevelRadioGroup = findViewById(R.id.autoAscentLevelRadioGroup);
         RadioGroup teleOpRadioGroup = findViewById(R.id.teleOpRadioGroup);
         CheckBox teleOpSamplesCheckbox = findViewById(R.id.teleOpSamplesCheckbox);
         RadioGroup teleOpSamplesRadioGroup = findViewById(R.id.teleOpSamplesRadioGroup);
@@ -66,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
                 autoSpecimensRadioGroup.setVisibility(View.GONE);
                 autoSpecimensInput.setVisibility(View.GONE);
                 autoParkingRadioGroup.setVisibility(View.GONE);
-                autoAscentLevelRadioGroup.setVisibility(View.GONE);
                 autoSamplesCheckbox.setChecked(false);
                 autoSpecimensCheckbox.setChecked(false);
                 autoSamplesRadioGroup.clearCheck();
@@ -101,14 +99,7 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
             }
         });
 
-        autoParkingRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == R.id.autoAscentRadio) {
-                autoAscentLevelRadioGroup.setVisibility(View.VISIBLE);
-            } else {
-                autoAscentLevelRadioGroup.setVisibility(View.GONE);
-                autoAscentLevelRadioGroup.clearCheck();
-            }
-        });
+
 
         teleOpRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.teleOpYes) {
@@ -180,17 +171,7 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
             }
             int autoAscentLevel = 0;
             if (autoParkingType.equals("Ascent")) {
-                String autoAscentLevelText = ((RadioButton) findViewById(autoAscentLevelRadioGroup.getCheckedRadioButtonId())).getText().toString();
-                if (autoAscentLevelText.equals("Level 1")) {
-                    autoAscentLevel = 1;
-                } else if (autoAscentLevelText.equals("Level 2")) {
-                    autoAscentLevel = 2;
-                } else if (autoAscentLevelText.equals("Level 3")) {
-                    autoAscentLevel = 3;
-                }
-                else {
-                    autoAscentLevel = 0;
-                }
+               autoAscentLevel = 1;
             }
 
             boolean teleOp = ((RadioButton) findViewById(teleOpRadioGroup.getCheckedRadioButtonId())).getText().toString().equals("Yes");
@@ -235,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
             autoSpecimensRadioGroup.clearCheck();
             autoSpecimensInput.setText("");
             autoParkingRadioGroup.clearCheck();
-            autoAscentLevelRadioGroup.clearCheck();
+
 
             teleOpRadioGroup.clearCheck();
             teleOpSamplesCheckbox.setChecked(false);

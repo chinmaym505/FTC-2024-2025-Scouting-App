@@ -66,7 +66,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
             autoSpecimensRadioGroup = itemView.findViewById(R.id.autoSpecimensRadioGroup);
             autoSpecimensInput = itemView.findViewById(R.id.autoSpecimensInput);
             autoParkingRadioGroup = itemView.findViewById(R.id.autoParkingRadioGroup);
-            autoAscentLevelRadioGroup = itemView.findViewById(R.id.autoAscentLevelRadioGroup);
+
             teleOpSamplesCheckbox = itemView.findViewById(R.id.teleOpSamplesCheckbox);
             teleOpSamplesRadioGroup = itemView.findViewById(R.id.teleOpSamplesRadioGroup);
             teleOpSamplesInput = itemView.findViewById(R.id.teleOpSamplesInput);
@@ -117,15 +117,6 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
 
             if (team.getAutoParkingType().equals("Ascent")) {
                 holder.autoParkingRadioGroup.check(R.id.autoAscentRadio);
-                holder.autoAscentLevelRadioGroup.setVisibility(View.VISIBLE);
-                int ascentLevelRadioId;
-                switch (team.getAutoAscentLevel()) {
-                    case 1: ascentLevelRadioId = R.id.autoAscentLevel1Radio; break;
-                    case 2: ascentLevelRadioId = R.id.autoAscentLevel2Radio; break;
-                    case 3: ascentLevelRadioId = R.id.autoAscentLevel3Radio; break;
-                    default: ascentLevelRadioId = -1;
-                }
-                holder.autoAscentLevelRadioGroup.check(ascentLevelRadioId);
             } else if (team.getAutoParkingType().equals("Parking")) {
                 holder.autoParkingRadioGroup.check(R.id.autoParkingRadio);
                 holder.autoAscentLevelRadioGroup.setVisibility(View.GONE);

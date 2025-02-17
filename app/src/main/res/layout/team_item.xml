@@ -133,29 +133,7 @@
                 android:text="None"/>
         </RadioGroup>
 
-        <RadioGroup
-            android:id="@+id/autoAscentLevelRadioGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="gone">
-            <RadioButton
-                android:id="@+id/autoAscentLevel1Radio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Level 1"/>
-            <RadioButton
-                android:id="@+id/autoAscentLevel2Radio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Level 2"/>
-            <RadioButton
-                android:id="@+id/autoAscentLevel3Radio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Level 3"/>
-        </RadioGroup>
-
+        
         <Button
             android:id="@+id/editAutoButton"
             android:layout_width="wrap_content"
