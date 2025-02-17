@@ -32,7 +32,7 @@ jobs:
         gradle-version: '7.4' # Use a compatible Gradle version
 
     - name: Build with Gradle
-      run: ./gradlew build --warning-mode all  # Enable warning mode to highlight deprecated features
+      run: ./gradlew assembleDebug --warning-mode all  # Enable warning mode to highlight deprecated features and generate APK file
 
     - name: Run tests
       run: ./gradlew test
@@ -41,4 +41,4 @@ jobs:
       uses: actions/upload-artifact@v4 # Update to the latest version
       with:
         name: build-artifacts
-        path: app/build/outputs/
+        path: app/build/outputs/apk/  # Specify the correct path for the APK file
