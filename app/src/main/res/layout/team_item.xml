@@ -30,6 +30,13 @@
         android:visibility="gone">
 
         <TextView
+            android:id="@+id/autoDisabledLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Disabled"
+            android:visibility="gone"/>
+
+        <TextView
             android:id="@+id/autoSpecimensLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,6 +82,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone">
+
+        <TextView
+            android:id="@+id/teleOpDisabledLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Disabled"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/teleOpSpecimensLabel"

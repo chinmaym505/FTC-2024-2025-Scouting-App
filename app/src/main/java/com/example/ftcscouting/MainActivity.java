@@ -66,10 +66,10 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
 
         saveButton.setOnClickListener(v -> {
             String teamName = teamNameInput.getText().toString();
-            boolean auto = ((RadioButton) findViewById(autoRadioGroup.getCheckedRadioButtonId())).getText().toString().equals("Yes");
+            boolean auto = ((RadioButton)findViewById(autoRadioGroup.getCheckedRadioButtonId())).getText().toString().equals("Yes");
             int autoSpecimens = auto ? Integer.parseInt(autoSpecimensInput.getText().toString()) : 0;
             int autoSamples = auto ? Integer.parseInt(autoSamplesInput.getText().toString()) : 0;
-            boolean teleOp = ((RadioButton) findViewById(teleOpRadioGroup.getCheckedRadioButtonId())).getText().toString().equals("Yes");
+            boolean teleOp = ((RadioButton)findViewById(teleOpRadioGroup.getCheckedRadioButtonId())).getText().toString().equals("Yes");
             int teleOpSpecimens = teleOp ? Integer.parseInt(teleOpSpecimensInput.getText().toString()) : 0;
             int teleOpSamples = teleOp ? Integer.parseInt(teleOpSamplesInput.getText().toString()) : 0;
 

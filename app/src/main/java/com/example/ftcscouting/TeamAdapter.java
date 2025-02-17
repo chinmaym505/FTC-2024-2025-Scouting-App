@@ -34,6 +34,8 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         public Button editAutoButton;
         public Button editTeleOpButton;
         public Button deleteTeamButton;
+        public TextView autoDisabledLabel;
+        public TextView teleOpDisabledLabel;
 
         public TeamViewHolder(View itemView) {
             super(itemView);
@@ -49,6 +51,8 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
             editAutoButton = itemView.findViewById(R.id.editAutoButton);
             editTeleOpButton = itemView.findViewById(R.id.editTeleOpButton);
             deleteTeamButton = itemView.findViewById(R.id.deleteTeamButton);
+            autoDisabledLabel = itemView.findViewById(R.id.autoDisabledLabel);
+            teleOpDisabledLabel = itemView.findViewById(R.id.teleOpDisabledLabel);
         }
     }
 
@@ -64,10 +68,29 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         Team team = teams.get(position);
         holder.teamNameTextView.setText(team.getName());
 
-        holder.autoSpecimensInput.setText(String.valueOf(team.getAutoSpecimens()));
-        holder.autoSamplesInput.setText(String.valueOf(team.getAutoSamples()));
-        holder.teleOpSpecimensInput.setText(String.valueOf(team.getTeleOpSpecimens()));
-        holder.teleOpSamplesInput.setText(String.valueOf(team.getTeleOpSamples()));
+        if (team.isAuto()) {
+            holder.autoDisabledLabel.setVisibility(View.GONE);
+            holder.autoSpecimensInput.setVisibility(View.VISIBLE);
+            holder.autoSamplesInput.setVisibility(View.VISIBLE);
+            holder.autoSpecimensInput.setText(String.valueOf(team.getAutoSpecimens()));
+            holder.autoSamplesInput.setText(String.valueOf(team.getAutoSamples()));
+        } else {
+            holder.autoDisabledLabel.setVisibility(View.VISIBLE);
+            holder.autoSpecimensInput.setVisibility(View.GONE);
+            holder.autoSamplesInput.setVisibility(View.GONE);
+        }
+
+        if (team.isTeleOp()) {
+            holder.teleOpDisabledLabel.setVisibility(View.GONE);
+            holder.teleOpSpecimensInput.setVisibility(View.VISIBLE);
+            holder.teleOpSamplesInput.setVisibility(View.VISIBLE);
+            holder.teleOpSpecimensInput.setText(String.valueOf(team.getTeleOpSpecimens()));
+            holder.teleOpSamplesInput.setText(String.valueOf(team.getTeleOpSamples()));
+        } else {
+            holder.teleOpDisabledLabel.setVisibility(View.VISIBLE);
+            holder.teleOpSpecimensInput.setVisibility(View.GONE);
+            holder.teleOpSamplesInput.setVisibility(View.GONE);
+        }
 
         holder.autoToggleButton.setOnClickListener(v -> {
             if (holder.autoContainer.getVisibility() == View.GONE) {
