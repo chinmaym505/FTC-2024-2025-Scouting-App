@@ -172,7 +172,12 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
             int autoSpecimensCount = autoSpecimens ? Integer.parseInt(autoSpecimensInput.getText().toString()) : 0;
             String autoSamplesType = autoSamples ? ((RadioButton) findViewById(autoSamplesRadioGroup.getCheckedRadioButtonId())).getText().toString() : "";
             String autoSpecimensType = autoSpecimens ? ((RadioButton) findViewById(autoSpecimensRadioGroup.getCheckedRadioButtonId())).getText().toString() : "";
-            String autoParkingType = ((RadioButton) findViewById(autoParkingRadioGroup.getCheckedRadioButtonId())).getText().toString();
+            String autoParkingType;
+            try{
+                autoParkingType = ((RadioButton) findViewById(autoParkingRadioGroup.getCheckedRadioButtonId())).getText().toString();
+            } catch (Exception e) {
+                autoParkingType = "none";
+            }
             int autoAscentLevel = 0;
             if (autoParkingType.equals("Ascent")) {
                 String autoAscentLevelText = ((RadioButton) findViewById(autoAscentLevelRadioGroup.getCheckedRadioButtonId())).getText().toString();
