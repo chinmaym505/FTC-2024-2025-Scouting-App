@@ -31,27 +31,55 @@ public class Team {
         return auto;
     }
 
+    public void setAuto(boolean auto) {
+        this.auto = auto;
+    }
+
     public int getAutoSpecimens() {
         return autoSpecimens;
+    }
+
+    public void setAutoSpecimens(int autoSpecimens) {
+        this.autoSpecimens = autoSpecimens;
     }
 
     public int getAutoSamples() {
         return autoSamples;
     }
 
+    public void setAutoSamples(int autoSamples) {
+        this.autoSamples = autoSamples;
+    }
+
     public boolean isTeleOp() {
         return teleOp;
+    }
+
+    public void setTeleOp(boolean teleOp) {
+        this.teleOp = teleOp;
     }
 
     public int getTeleOpSpecimens() {
         return teleOpSpecimens;
     }
 
+    public void setTeleOpSpecimens(int teleOpSpecimens) {
+        this.teleOpSpecimens = teleOpSpecimens;
+    }
+
     public int getTeleOpSamples() {
         return teleOpSamples;
     }
 
+    public void setTeleOpSamples(int teleOpSamples) {
+        this.teleOpSamples = teleOpSamples;
+    }
+
     public List<String> getNotes() {
         return notes;
+    }
+
+    public void setNotes(List<String> notes) {
+        this.notes = notes;
     }
 }
