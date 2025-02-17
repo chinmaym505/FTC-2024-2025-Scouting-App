@@ -41,4 +41,4 @@ jobs:
       uses: actions/upload-artifact@v4 # Update to the latest version
       with:
         name: build-artifacts
-        path: app/build/outputs/apk/  # Specify the correct path for the APK file
+        path: app/build/outputs/apk/debug/  # Specify the correct path for the APK file
