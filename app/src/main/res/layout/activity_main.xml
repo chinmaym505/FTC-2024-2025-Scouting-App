@@ -1,3 +1,8 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -8,106 +13,313 @@
     <EditText
         android:id="@+id/teamNameInput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Team Name"/>
+        android:layout_height="58dp"
+        android:hint="Team Name"
+        android:inputType="text" />
 
-    <!-- Auto Section -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Auto"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:paddingTop="8dp"/>
+        android:textStyle="bold"/>
 
     <RadioGroup
         android:id="@+id/autoRadioGroup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <RadioButton
             android:id="@+id/autoYes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Yes"/>
-
         <RadioButton
             android:id="@+id/autoNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No"
-            android:checked="true"/> <!-- Set default to No -->
+            android:text="No"/>
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/autoSamplesCheckbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Samples"/>
+
+    <RadioGroup
+        android:id="@+id/autoSamplesRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <RadioButton
+            android:id="@+id/autoHighBasketRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="High Basket"/>
+        <RadioButton
+            android:id="@+id/autoLowBasketRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Low Basket"/>
+        <RadioButton
+            android:id="@+id/autoNetZoneRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Net Zone"/>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/autoSamplesInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Number of Samples"
+        android:visibility="gone"/>
+
+    <CheckBox
+        android:id="@+id/autoSpecimensCheckbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Specimens"/>
+
+    <RadioGroup
+        android:id="@+id/autoSpecimensRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <RadioButton
+            android:id="@+id/autoHighBarRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="High Bar"/>
+        <RadioButton
+            android:id="@+id/autoLowBarRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Low Bar"/>
     </RadioGroup>
 
     <EditText
         android:id="@+id/autoSpecimensInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Number of Specimens"
         android:inputType="number"
+        android:hint="Number of Specimens"
         android:visibility="gone"/>
 
-    <EditText
-        android:id="@+id/autoSamplesInput"
+    <TextView
+        android:id="@+id/autoParkingLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Number of Samples"
-        android:inputType="number"
-        android:visibility="gone"/>
+        android:text="Parking/Ascent"/>
 
-    <!-- TeleOP Section -->
+    <RadioGroup
+        android:id="@+id/autoParkingRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/autoParkingRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parking"/>
+        <RadioButton
+            android:id="@+id/autoAscentRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ascent"/>
+        <RadioButton
+            android:id="@+id/autoNoneRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="None"/>
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/autoAscentLevelRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <RadioButton
+            android:id="@+id/autoAscentLevel1Radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level 1"/>
+        <RadioButton
+            android:id="@+id/autoAscentLevel2Radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level 2"/>
+        <RadioButton
+            android:id="@+id/autoAscentLevel3Radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level 3"/>
+    </RadioGroup>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TeleOP"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:paddingTop="8dp"/>
+        android:textStyle="bold"/>
 
     <RadioGroup
         android:id="@+id/teleOpRadioGroup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <RadioButton
             android:id="@+id/teleOpYes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Yes"/>
-
         <RadioButton
             android:id="@+id/teleOpNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No"
-            android:checked="true"/> <!-- Set default to No -->
+            android:text="No"/>
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/teleOpSamplesCheckbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Samples"/>
+
+    <RadioGroup
+        android:id="@+id/teleOpSamplesRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <RadioButton
+            android:id="@+id/teleOpHighBasketRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="High Basket"/>
+        <RadioButton
+            android:id="@+id/teleOpLowBasketRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Low Basket"/>
+        <RadioButton
+            android:id="@+id/teleOpNetZoneRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Net Zone"/>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/teleOpSamplesInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Number of Samples"
+        android:visibility="gone"/>
+
+    <CheckBox
+        android:id="@+id/teleOpSpecimensCheckbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Specimens"/>
+
+    <RadioGroup
+        android:id="@+id/teleOpSpecimensRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <RadioButton
+            android:id="@+id/teleOpHighBarRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="High Bar"/>
+        <RadioButton
+            android:id="@+id/teleOpLowBarRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Low Bar"/>
     </RadioGroup>
 
     <EditText
         android:id="@+id/teleOpSpecimensInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="number"
         android:hint="Number of Specimens"
-        android:inputType="number"
         android:visibility="gone"/>
 
-    <EditText
-        android:id="@+id/teleOpSamplesInput"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Number of Samples"
-        android:inputType="number"
-        android:visibility="gone"/>
+        android:text="End Game"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
 
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="match_parent"
+<RadioGroup
+    android:id="@+id/endGameAscentRadioGroup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <RadioButton
+        android:id="@+id/endGameAscentYesRadio"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"/>
+        android:text="Yes"/>
+    <RadioButton
+        android:id="@+id/endGameAscentNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"/>
+</RadioGroup>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/teamRecyclerView"
-        android:layout_width="match_parent"
+<RadioGroup
+    android:id="@+id/endGameAscentLevelRadioGroup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:visibility="gone">
+    <RadioButton
+        android:id="@+id/endGameAscentLevel1Radio"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="8dp"/>
+        android:text="Level 1"/>
+    <RadioButton
+        android:id="@+id/endGameAscentLevel2Radio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 2"/>
+    <RadioButton
+        android:id="@+id/endGameAscentLevel3Radio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 3"/>
+</RadioGroup>
+
+<Button
+    android:id="@+id/saveButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Save"/>
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/teamRecyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 </LinearLayout>
+</ScrollView>
