@@ -51,7 +51,7 @@ jobs:
         mkdir -p apk-output
         cp app/build/outputs/apk/debug/app-debug.apk apk-output/
         git add apk-output/app-debug.apk
-        git commit -m "Add generated APK"
+        git commit -m "{AUTOMATION} Add generated APK"
         git push origin master --force
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
