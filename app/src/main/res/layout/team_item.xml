@@ -13,30 +13,21 @@
         android:textStyle="bold"
         android:text="Team Name"/>
 
-    <LinearLayout
+    <!-- Auto Section -->
+    <Button
+        android:id="@+id/autoToggleButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="Auto ▼"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Auto"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <Button
-                android:id="@+id/editAutoButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit"/>
-        </LinearLayout>
+    <LinearLayout
+        android:id="@+id/autoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/autoSpecimensLabel"
@@ -61,32 +52,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"/>
+
+        <Button
+            android:id="@+id/editAutoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Auto"/>
     </LinearLayout>
 
-    <LinearLayout
+    <!-- TeleOP Section -->
+    <Button
+        android:id="@+id/teleOpToggleButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="TeleOP ▼"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TeleOP"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <Button
-                android:id="@+id/editTeleOpButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit"/>
-        </LinearLayout>
+    <LinearLayout
+        android:id="@+id/teleOpContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/teleOpSpecimensLabel"
@@ -111,6 +99,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"/>
+
+        <Button
+            android:id="@+id/editTeleOpButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit TeleOP"/>
     </LinearLayout>
 
     <Button
