@@ -42,3 +42,16 @@ jobs:
       with:
         name: build-artifacts
         path: app/build/outputs/apk/debug/  # Specify the correct path for the APK file
+
+    - name: Push APK to GitHub
+      run: |
+        git config --global user.email "chinmay.malvania@gmail.com"
+        git config --global user.name "chinmaym505"
+        git checkout master
+        mkdir -p apk-output
+        cp app/build/outputs/apk/debug/app-debug.apk apk-output/
+        git add apk-output/app-debug.apk
+        git commit -m "Add generated APK"
+        git push origin master --force
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
