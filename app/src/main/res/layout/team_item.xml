@@ -11,14 +11,111 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="Team"/>
+        android:text="Team Name"/>
 
-    <TextView
-        android:id="@+id/notesTextView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Notes:">
+        android:orientation="vertical">
 
-        <!-- We can add more TextViews or other UI elements here as needed -->
-    </TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Auto"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/editAutoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/autoSpecimensLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Specimens:"/>
+
+        <EditText
+            android:id="@+id/autoSpecimensInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+
+        <TextView
+            android:id="@+id/autoSamplesLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Samples:"/>
+
+        <EditText
+            android:id="@+id/autoSamplesInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TeleOP"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/editTeleOpButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/teleOpSpecimensLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Specimens:"/>
+
+        <EditText
+            android:id="@+id/teleOpSpecimensInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+
+        <TextView
+            android:id="@+id/teleOpSamplesLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Samples:"/>
+
+        <EditText
+            android:id="@+id/teleOpSamplesInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/deleteTeamButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Team"/>
 </LinearLayout>
