@@ -1,5 +1,7 @@
 package com.example.ftcscouting;
 
+import android.graphics.Bitmap;
+
 import java.util.List;
 
 public class Team {
@@ -23,8 +25,9 @@ public class Team {
     private boolean endGameAscent;
     private int endGameAscentLevel;
     private List<String> notes;
+    private Bitmap drawing;
 
-    public Team(String name, boolean auto, boolean autoSamples, int autoSamplesCount, String autoSamplesType, boolean autoSpecimens, int autoSpecimensCount, String autoSpecimensType, String autoParkingType, int autoAscentLevel, boolean teleOp, boolean teleOpSamples, int teleOpSamplesCount, String teleOpSamplesType, boolean teleOpSpecimens, int teleOpSpecimensCount, String teleOpSpecimensType, boolean endGameAscent, int endGameAscentLevel, List<String> notes) {
+    public Team(String name, boolean auto, boolean autoSamples, int autoSamplesCount, String autoSamplesType, boolean autoSpecimens, int autoSpecimensCount, String autoSpecimensType, String autoParkingType, int autoAscentLevel, boolean teleOp, boolean teleOpSamples, int teleOpSamplesCount, String teleOpSamplesType, boolean teleOpSpecimens, int teleOpSpecimensCount, String teleOpSpecimensType, boolean endGameAscent, int endGameAscentLevel, List<String> notes, Bitmap drawing) {
         this.name = name;
         this.auto = auto;
         this.autoSamples = autoSamples;
@@ -45,9 +48,16 @@ public class Team {
         this.endGameAscent = endGameAscent;
         this.endGameAscentLevel = endGameAscentLevel;
         this.notes = notes;
+        this.drawing = drawing;
     }
 
     // Getters and Setters for each property
+    public Bitmap getDrawing() {
+        return drawing;
+    }
+    public void setDrawing(Bitmap drawing) {
+        this.drawing = drawing;
+    }
 
     public String getName() {
         return name;

@@ -137,7 +137,13 @@
             android:layout_height="wrap_content"
             android:text="None"/>
     </RadioGroup>
+<!-- ImageView for Game Field -->
 
+    <!-- Custom Drawing View -->
+<com.example.ftcscouting.DrawingView
+    android:id="@+id/drawingView"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

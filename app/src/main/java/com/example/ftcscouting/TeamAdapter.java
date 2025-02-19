@@ -1,11 +1,14 @@
 package com.example.ftcscouting;
 
+import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -52,6 +55,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         public Button deleteTeamButton;
         public TextView autoDisabledLabel;
         public TextView teleOpDisabledLabel;
+        public ImageView teamDrawingImageView;
 
         public TeamViewHolder(View itemView) {
             super(itemView);
@@ -83,6 +87,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
             deleteTeamButton = itemView.findViewById(R.id.deleteTeamButton);
             autoDisabledLabel = itemView.findViewById(R.id.autoDisabledLabel);
             teleOpDisabledLabel = itemView.findViewById(R.id.teleOpDisabledLabel);
+            teamDrawingImageView = itemView.findViewById(R.id.teamDrawingImageView);
         }
     }
 
@@ -97,6 +102,14 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
     public void onBindViewHolder(@NonNull TeamViewHolder holder, int position) {
         Team team = teams.get(position);
         holder.teamNameTextView.setText(team.getName());
+        Bitmap drawing = team.getDrawing();
+        if (drawing != null) {
+            Log.d("TeamAdapter", "Drawing found for team: " + team.getName());
+            holder.teamDrawingImageView.setImageBitmap(drawing);
+        } else {
+            Log.d("TeamAdapter", "No drawing found for team: " + team.getName());
+            holder.teamDrawingImageView.setImageResource(R.drawable.field);
+        }
 
         // Auto Section
         if (team.isAuto()) {
@@ -104,6 +117,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
             holder.autoSamplesCheckbox.setVisibility(View.VISIBLE);
             holder.autoSpecimensCheckbox.setVisibility(View.VISIBLE);
             holder.autoParkingRadioGroup.setVisibility(View.VISIBLE);
+            holder.itemView.setVisibility(View.VISIBLE);
 
             holder.autoSamplesCheckbox.setChecked(team.isAutoSamples());
             holder.autoSamplesRadioGroup.setVisibility(team.isAutoSamples() ? View.VISIBLE : View.GONE);
@@ -119,13 +133,12 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
                 holder.autoParkingRadioGroup.check(R.id.autoAscentRadio);
             } else if (team.getAutoParkingType().equals("Parking")) {
                 holder.autoParkingRadioGroup.check(R.id.autoParkingRadio);
-                holder.autoAscentLevelRadioGroup.setVisibility(View.GONE);
             } else {
                 holder.autoParkingRadioGroup.check(R.id.autoNoneRadio);
-                holder.autoAscentLevelRadioGroup.setVisibility(View.GONE);
             }
         } else {
             holder.autoDisabledLabel.setVisibility(View.VISIBLE);
+            holder.itemView.setVisibility(View.GONE);
             holder.autoSamplesCheckbox.setVisibility(View.GONE);
             holder.autoSpecimensCheckbox.setVisibility(View.GONE);
             holder.autoSamplesRadioGroup.setVisibility(View.GONE);
@@ -133,7 +146,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
             holder.autoSpecimensRadioGroup.setVisibility(View.GONE);
             holder.autoSpecimensInput.setVisibility(View.GONE);
             holder.autoParkingRadioGroup.setVisibility(View.GONE);
-            holder.autoAscentLevelRadioGroup.setVisibility(View.GONE);
+
         }
 
         // TeleOP Section
