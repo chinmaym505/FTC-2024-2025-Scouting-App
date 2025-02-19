@@ -1,6 +1,9 @@
 package com.example.ftcscouting;
 
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -8,10 +11,16 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
     private List<Team> teams;
     private RecyclerView teamRecyclerView;
     private TeamAdapter teamAdapter;
+    DrawingView drawingView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
         RadioGroup autoSamplesRadioGroup = findViewById(R.id.autoSamplesRadioGroup);
         EditText autoSamplesInput = findViewById(R.id.autoSamplesInput);
         CheckBox autoSpecimensCheckbox = findViewById(R.id.autoSpecimensCheckbox);
+        drawingView = findViewById(R.id.drawingView);
         RadioGroup autoSpecimensRadioGroup = findViewById(R.id.autoSpecimensRadioGroup);
         EditText autoSpecimensInput = findViewById(R.id.autoSpecimensInput);
         RadioGroup autoParkingRadioGroup = findViewById(R.id.autoParkingRadioGroup);
@@ -48,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
         Button saveButton = findViewById(R.id.saveButton);
         teamRecyclerView = findViewById(R.id.teamRecyclerView);
 
+
         teamAdapter = new TeamAdapter(teams, this);
         teamRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         teamRecyclerView.setAdapter(teamAdapter);
@@ -57,7 +71,9 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
                 autoSamplesCheckbox.setVisibility(View.VISIBLE);
                 autoSpecimensCheckbox.setVisibility(View.VISIBLE);
                 autoParkingRadioGroup.setVisibility(View.VISIBLE);
+                drawingView.setVisibility(View.VISIBLE);
             } else if (checkedId == R.id.autoNo) {
+                drawingView.setVisibility(View.GONE);
                 autoSamplesCheckbox.setVisibility(View.GONE);
                 autoSpecimensCheckbox.setVisibility(View.GONE);
                 autoSamplesRadioGroup.setVisibility(View.GONE);
@@ -158,7 +174,22 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
             String teamName = teamNameInput.getText().toString();
             boolean auto = ((RadioButton) findViewById(autoRadioGroup.getCheckedRadioButtonId())).getText().toString().equals("Yes");
             boolean autoSamples = autoSamplesCheckbox.isChecked();
-            int autoSamplesCount = autoSamples ? Integer.parseInt(autoSamplesInput.getText().toString()) : 0;
+            int autoSamplesCount;
+            try{
+            autoSamplesCount = autoSamples ? Integer.parseInt(autoSamplesInput.getText().toString()) : 0;
+            }catch (Exception e){
+                autoSamplesCount = 0;
+            }
+            DrawingView drawingView = findViewById(R.id.drawingView);
+            Bitmap bitmap;
+            try {
+                bitmap = Bitmap.createBitmap(drawingView.getWidth(), drawingView.getHeight(), Bitmap.Config.ARGB_8888);
+
+            } catch (Exception e){
+                bitmap = null;
+            }
+            Canvas canvas = new Canvas(bitmap);
+            drawingView.draw(canvas);
             boolean autoSpecimens = autoSpecimensCheckbox.isChecked();
             int autoSpecimensCount = autoSpecimens ? Integer.parseInt(autoSpecimensInput.getText().toString()) : 0;
             String autoSamplesType = autoSamples ? ((RadioButton) findViewById(autoSamplesRadioGroup.getCheckedRadioButtonId())).getText().toString() : "";
@@ -186,8 +217,12 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
                 teleOpSamplesType = "none";
             }
                 String teleOpSpecimensType = teleOpSpecimens ? ((RadioButton) findViewById(teleOpSpecimensRadioGroup.getCheckedRadioButtonId())).getText().toString() : "";
-
-            boolean endGameAscent = ((RadioButton) findViewById(endGameAscentRadioGroup.getCheckedRadioButtonId())).getText().toString().equals("Yes");
+            boolean endGameAscent;
+            try{
+                endGameAscent = ((RadioButton) findViewById(endGameAscentRadioGroup.getCheckedRadioButtonId())).getText().toString().equals("Yes");
+            } catch (Exception e) {
+                endGameAscent = false;
+            }
             int endGameAscentLevel = 0;
             if (endGameAscent) {
                 String endGameAscentLevelText = ((RadioButton) findViewById(endGameAscentLevelRadioGroup.getCheckedRadioButtonId())).getText().toString();
@@ -203,7 +238,7 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
                 }
             }
 
-            Team team = new Team(teamName, auto, autoSamples, autoSamplesCount, autoSamplesType, autoSpecimens, autoSpecimensCount, autoSpecimensType, autoParkingType, autoAscentLevel, teleOp, teleOpSamples, teleOpSamplesCount, teleOpSamplesType, teleOpSpecimens, teleOpSpecimensCount, teleOpSpecimensType, endGameAscent, endGameAscentLevel, new ArrayList<>());
+            Team team = new Team(teamName, auto, autoSamples, autoSamplesCount, autoSamplesType, autoSpecimens, autoSpecimensCount, autoSpecimensType, autoParkingType, autoAscentLevel, teleOp, teleOpSamples, teleOpSamplesCount, teleOpSamplesType, teleOpSpecimens, teleOpSpecimensCount, teleOpSpecimensType, endGameAscent, endGameAscentLevel, new ArrayList<>(), bitmap);
             teams.add(team);
             teamAdapter.notifyDataSetChanged();
 
@@ -228,6 +263,7 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.OnIte
 
             endGameAscentRadioGroup.clearCheck();
             endGameAscentLevelRadioGroup.clearCheck();
+            drawingView.clearDrawing();
         });
 
 
