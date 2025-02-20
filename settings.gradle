@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "FTCScouting"
+rootProject.name = "FTC Scouting App"
 include ':app'
